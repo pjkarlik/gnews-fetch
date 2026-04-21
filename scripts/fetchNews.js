@@ -2,7 +2,11 @@ import fs from "fs";
 
 const API_KEY = process.env.GNEWS_API_KEY;
 
-const URL = `https://gnews.io/api/v4/top-headlines?lang=en&max=9&apikey=${API_KEY}`;
+const max = 12;
+const lang = "en";
+const category = 'nation';
+
+const URL =  `https://gnews.io/api/v4/top-headlines?lang=${lang}&country=us&max=${max}&category=${category}&apikey=${API_KEY}`
 
 async function run() {
   try {
@@ -19,6 +23,7 @@ async function run() {
         title: a.title,
         url: a.url,
         image: a.image,
+        description: a.description,
         source: a.source.name
       }))
     };
